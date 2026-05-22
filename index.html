@@ -45,12 +45,11 @@
     /* HEADER */
     .header {
       text-align: center;
-      margin-bottom: 1.75rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 2px solid var(--navy);
+      margin-bottom: 0.4rem;
+      padding-bottom: 0;
     }
     .header-main {
-      font-size: 0.95rem;
+      font-size: 1.25rem;
       font-weight: 700;
       color: var(--navy);
       letter-spacing: -0.01em;
@@ -209,12 +208,10 @@
       box-shadow: var(--shadow-sm);
     }
     .balance-title {
-      font-size: 17px;
+      font-size: 12px;
       font-weight: 800;
-      color: var(--navy);
       letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+      color: var(--navy);
       padding-bottom: 8px;
       border-bottom: 2px solid var(--navy);
       text-align: left;
@@ -229,7 +226,7 @@
     }
     .balance-row .bal-val { font-weight: 600; }
     .balance-row.main {
-      font-size: 17px;
+      font-size: 13px;
       font-weight: 600;
       color: var(--text-primary);
       padding: 7px 0 7px 36px;
@@ -248,7 +245,7 @@
 
     .section-divider {
       text-align: left;
-      font-size: 17px;
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: 0.12em;
       color: var(--navy);
@@ -293,13 +290,10 @@
   <div class="page">
 
     <div class="header">
-      <div class="header-main">PROYECCIÓN DE RECAUDACIÓN Y COSTOS</div>
-      <div class="header-sub" style="margin-bottom:4px;">(Revisado: 21 de mayo de 2026)</div>
-      <div class="header-sub">50 Aniversario · Prom XXXV · Maristas San Isidro</div>
+      <div class="header-main">Financiamiento - 50 aniversario</div>
     </div>
 
     <div class="sticky-scenarios">
-    <div class="scenario-label">ESCENARIOS DE ASISTENCIA:</div>
     <div class="scenario-card">
       <label class="scenario-option active" onclick="switchScenario(0)" id="lbl-0">
         <input type="radio" name="escenario" checked>
@@ -313,7 +307,7 @@
       <div class="scenario-divider"></div>
       <label class="scenario-option" onclick="switchScenario(2)" id="lbl-2">
         <input type="radio" name="escenario">
-        <div class="s-text"><span class="s-num">Escenario 3</span><span class="s-desc">Asistencia óptima (50 asistentes pagantes)</span></div>
+        <div class="s-text"><span class="s-num">Escenario 3</span><span class="s-desc">Asistencia óptima (50 asistentes)</span></div>
       </label>
     </div>
     </div><!-- end sticky-scenarios -->
