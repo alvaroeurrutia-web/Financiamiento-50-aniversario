@@ -63,69 +63,55 @@
     }
 
     /* SCENARIO TABS */
-    .scenario-tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 1.5rem;
+    .scenario-label {
+      text-align: left;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--navy);
     }
-    .tab {
-      flex: 1;
-      padding: 10px 8px;
-      text-align: center;
-      font-size: 11px;
-      line-height: 1.45;
-      cursor: pointer;
+    .scenario-card {
+      background: var(--bg-card);
       border: 1.5px solid var(--border);
       border-radius: var(--radius-md);
-      color: var(--text-secondary);
-      background: var(--bg-card);
-      transition: all 0.18s ease;
       box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      margin-bottom: 1rem;
     }
-    .tab:hover { border-color: var(--navy-light); color: var(--navy); }
-    .tab.active {
+    .scenario-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      font-size: 15px;
+      line-height: 1.3;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: background 0.15s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .scenario-option:hover { background: var(--bg-section-hover); }
+    .scenario-option.active {
       background: var(--navy);
       color: #fff;
-      border-color: var(--navy);
-      font-weight: 600;
-      box-shadow: var(--shadow-md);
     }
-    .tab-num { font-size: 12px; font-weight: 700; display: block; margin-bottom: 2px; }
-    .tab-desc { font-size: 10px; opacity: 0.85; }
+    .scenario-option input[type="radio"] {
+      accent-color: var(--navy);
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .scenario-option.active input[type="radio"] { accent-color: #fff; }
+    .s-num { font-weight: 700; flex-shrink: 0; }
+    .s-desc { font-size: 15px; }
+    .scenario-divider { height: 1px; background: var(--border-light); }
 
-    /* SUMMARY CARDS */
-    .summary-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 1.75rem;
-    }
-    .metric {
-      background: var(--bg-card);
-      border-radius: var(--radius-md);
-      padding: 14px 12px;
-      border: 1.5px solid var(--border-light);
-      box-shadow: var(--shadow-sm);
-    }
-    .metric-label {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-    .metric-value {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-      line-height: 1;
-    }
-    .metric-sub {
-      font-size: 10px;
-      color: var(--text-muted);
-      line-height: 1.3;
-    }
     .color-green { color: var(--green); }
     .color-red   { color: var(--red); }
     .color-navy  { color: var(--navy); }
@@ -225,14 +211,15 @@
       box-shadow: var(--shadow-sm);
     }
     .balance-title {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       margin-bottom: 10px;
       padding-bottom: 8px;
-      border-bottom: 1px solid var(--border-light);
+      border-bottom: 2px solid var(--navy);
+      text-align: left;
     }
     .balance-row {
       display: flex;
@@ -243,6 +230,13 @@
       color: var(--text-secondary);
     }
     .balance-row .bal-val { font-weight: 600; }
+    .balance-row.main {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--text-primary);
+      padding: 7px 0 7px 36px;
+    }
+    .balance-row.main .bal-val { font-weight: 700; }
     .balance-row.total {
       font-size: 15px;
       font-weight: 700;
@@ -253,6 +247,34 @@
       padding-left: 36px;
     }
 
+
+    .section-divider {
+      text-align: left;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--navy);
+      margin: 1.25rem 0 0.75rem;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--navy);
+    }
+
+    .sticky-scenarios {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      padding: 10px 0 8px;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border-light);
+      box-shadow: 0 2px 8px rgba(26,58,107,0.08);
+    }
+    .sticky-scenarios .scenario-label {
+      margin-bottom: 0.6rem;
+    }
+    .sticky-scenarios .scenario-tabs {
+      margin-bottom: 0;
+    }
     .hidden { display: none; }
 
     /* FOOTER */
@@ -264,9 +286,6 @@
     }
 
     @media (max-width: 480px) {
-      .summary-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-      .metric-value { font-size: 0.9rem; }
-      .tab { font-size: 10px; padding: 8px 4px; }
       .section-header.indented { padding-left: 24px; }
       .row.indented { padding-left: 48px; }
     }
@@ -276,47 +295,41 @@
   <div class="page">
 
     <div class="header">
-      <div class="header-main">Proyección de recaudación y costos · 21 de mayo de 2026</div>
+      <div class="header-main">PROYECCIÓN DE RECAUDACIÓN Y COSTOS (Revisado: 21 de mayo de 2026)</div>
       <div class="header-sub">50 Aniversario · Prom XXXV · Maristas San Isidro</div>
     </div>
 
-    <div class="scenario-tabs">
-      <div class="tab active" onclick="switchScenario(0)">
-        <span class="tab-num">Escenario 1</span>
-        <span class="tab-desc">Asistencia basada en inscritos a la fecha</span>
-      </div>
-      <div class="tab" onclick="switchScenario(1)">
-        <span class="tab-num">Escenario 2</span>
-        <span class="tab-desc">Asistencia basada en votos del 2 de mayo</span>
-      </div>
-      <div class="tab" onclick="switchScenario(2)">
-        <span class="tab-num">Escenario 3</span>
-        <span class="tab-desc">Asistencia óptima (50 asistentes pagantes)</span>
-      </div>
+    <div class="sticky-scenarios">
+    <div class="scenario-label">ELIGE ESCENARIO:</div>
+    <div class="scenario-card">
+      <label class="scenario-option active" onclick="switchScenario(0)" id="lbl-0">
+        <input type="radio" name="escenario" checked> <span class="s-num">Escenario 1</span> · <span class="s-desc">Asistencia basada en número de inscritos a la fecha</span>
+      </label>
+      <div class="scenario-divider"></div>
+      <label class="scenario-option" onclick="switchScenario(1)" id="lbl-1">
+        <input type="radio" name="escenario"> <span class="s-num">Escenario 2</span> · <span class="s-desc">Asistencia basada en número de votos en votación de local el 2 de mayo</span>
+      </label>
+      <div class="scenario-divider"></div>
+      <label class="scenario-option" onclick="switchScenario(2)" id="lbl-2">
+        <input type="radio" name="escenario"> <span class="s-num">Escenario 3</span> · <span class="s-desc">Asistencia óptima (50 asistentes pagantes)</span>
+      </label>
+    </div>
+    </div><!-- end sticky-scenarios -->
+
+    <!-- RESUMEN -->
+    <div class="balance-bar">
+      <div class="balance-title">RESUMEN:</div>
+      <div class="balance-row main"><span>Total ingresos</span><span class="bal-val color-green" id="b-ingresos">S/ 17,700</span></div>
+      <div class="balance-row main"><span>Total costos</span><span class="bal-val color-red" id="b-costos">S/ 19,795</span></div>
+      <div class="balance-row total"><span>Balance neto</span><span id="b-balance" class="color-red">-S/ 2,095</span></div>
     </div>
 
-    <div class="summary-cards">
-      <div class="metric">
-        <div class="metric-label">INGRESOS</div>
-        <div class="metric-value color-green" id="m-ingresos">S/ 17,700</div>
-        <div class="metric-sub">Proyección de Recaudación Total</div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">COSTOS</div>
-        <div class="metric-value color-red" id="m-costos">S/ 19,795</div>
-        <div class="metric-sub">Proyección de Egreso Total</div>
-      </div>
-      <div class="metric">
-        <div class="metric-label">BALANCE</div>
-        <div class="metric-value color-red" id="m-balance">-S/ 2,095</div>
-        <div class="metric-sub" id="m-balance-label">Déficit</div>
-      </div>
-    </div>
+    <div class="section-divider">DETALLES:</div>
 
     <!-- Número de asistentes -->
     <div class="section">
       <div class="section-header" onclick="toggleSection('asistentes')">
-        <div class="section-title">&#128101; Número de asistentes</div>
+        <div class="section-title">&#128101; Número de asistentes: <span id="total-asistentes" style="font-weight:800; margin-left:4px;">30</span></div>
         <div class="section-right">
           <span class="chevron open" id="ch-asistentes">&#8964;</span>
         </div>
@@ -461,14 +474,6 @@
       </div>
     </div>
 
-    <!-- RESUMEN -->
-    <div class="balance-bar">
-      <div class="balance-title">RESUMEN</div>
-      <div class="balance-row"><span>Total ingresos</span><span class="bal-val color-green" id="b-ingresos">S/ 17,700</span></div>
-      <div class="balance-row"><span>Total costos</span><span class="bal-val color-red" id="b-costos">S/ 19,795</span></div>
-      <div class="balance-row total"><span>Balance neto</span><span id="b-balance" class="color-red">-S/ 2,095</span></div>
-    </div>
-
     <div class="footer">Maristas San Isidro · Prom XXXV · 50 Aniversario · 2026</div>
 
   </div><!-- end .page -->
@@ -478,26 +483,26 @@
       {
         ingresos:17700, cuotasV:8700, cuotasM:3000, padres:6000,
         pagantes:29, sacerdote:1, profes:0,
-        cuotaInv:75, local:490, deco:0,
+        cuotaInv:0, local:490, deco:0,
         cena:15000, comida:15000,
-        piqueo:300, bebidas:145, mesas:600, postre:320,
-        recuerdo:2150, recorda:1450
+        piqueo:300, bebidas:0, mesas:600, postre:320,
+        recuerdo:2150, recorda:0
       },
       {
         ingresos:21600, cuotasV:12600, cuotasM:3000, padres:6000,
         pagantes:42, sacerdote:1, profes:1,
-        cuotaInv:145, local:490, deco:0,
+        cuotaInv:0, local:490, deco:0,
         cena:15000, comida:15000,
-        piqueo:700, bebidas:210, mesas:750, postre:460,
-        recuerdo:2800, recorda:2100
+        piqueo:700, bebidas:0, mesas:750, postre:460,
+        recuerdo:2800, recorda:0
       },
       {
-        ingresos:24000, cuotasV:15000, cuotasM:3000, padres:6000,
-        pagantes:50, sacerdote:1, profes:2,
-        cuotaInv:190, local:570, deco:80,
-        cena:15900, comida:15900,
-        piqueo:1000, bebidas:250, mesas:900, postre:550,
-        recuerdo:3200, recorda:2500
+        ingresos:23100, cuotasV:14100, cuotasM:3000, padres:6000,
+        pagantes:47, sacerdote:1, profes:2,
+        cuotaInv:0, local:570, deco:80,
+        cena:15000, comida:15000,
+        piqueo:1000, bebidas:0, mesas:900, postre:550,
+        recuerdo:3200, recorda:0
       }
     ];
 
@@ -505,32 +510,43 @@
       return (n < 0 ? '-S/ ' : 'S/ ') + Math.abs(n).toLocaleString('es-PE');
     }
 
+    function calcBebidas(d) {
+      return 5 * d.pagantes;
+    }
+
+    function calcRecordatorios(d) {
+      return 50 * d.pagantes;
+    }
+
     function calcExtra(d) {
-      return d.piqueo + d.bebidas + 200 + d.mesas + 185 + d.postre;
+      return d.piqueo + calcBebidas(d) + 200 + d.mesas + 185 + d.postre;
+    }
+
+    function calcCuotaInv(d) {
+      const total = d.pagantes + d.sacerdote + d.profes;
+      return (total - 3 * (4 + 1)) * 5;
     }
 
     function totalCostos(d) {
-      return d.cuotaInv + d.local + 330 + d.cena + calcExtra(d) + d.recuerdo;
+      return calcCuotaInv(d) + d.local + 330 + d.cena + calcExtra(d) + calcRecordatorios(d) + 700;
     }
 
     function switchScenario(i) {
-      document.querySelectorAll('.tab').forEach((t, j) => t.classList.toggle('active', j === i));
+      document.querySelectorAll('.scenario-option').forEach((el, j) => {
+        el.classList.toggle('active', j === i);
+        el.querySelector('input[type="radio"]').checked = (j === i);
+      });
       const d = data[i];
       const extra = calcExtra(d);
       const costos = totalCostos(d);
       const bal = d.ingresos - costos;
       const isPos = bal >= 0;
 
-      // Summary cards
-      set('m-ingresos', fmt(d.ingresos), 'color-green');
-      set('m-costos', fmt(costos), 'color-red');
-      setBalance('m-balance', fmt(bal), isPos);
-      document.getElementById('m-balance-label').textContent = isPos ? 'Superávit' : 'Déficit';
-
       // Asistentes
       document.getElementById('r-pagantes').textContent = d.pagantes;
       document.getElementById('r-sacerdote').textContent = d.sacerdote;
       document.getElementById('r-profes').textContent = d.profes;
+      document.getElementById('total-asistentes').textContent = d.pagantes + d.sacerdote + d.profes;
 
       // Ingresos
       set('t-ingresos', fmt(d.ingresos), 'color-green');
@@ -542,8 +558,9 @@
       set('t-costos-resumen', fmt(costos), 'color-red');
 
       // Cuota invitados
-      document.getElementById('t-cuota-inv').textContent = fmt(d.cuotaInv);
-      document.getElementById('r-cuota-inv').textContent = fmt(d.cuotaInv);
+      const cuotaInv = calcCuotaInv(d);
+      document.getElementById('t-cuota-inv').textContent = fmt(cuotaInv);
+      document.getElementById('r-cuota-inv').textContent = fmt(cuotaInv);
 
       // Local
       document.getElementById('t-local').textContent = fmt(d.local);
@@ -556,13 +573,13 @@
       // Extra
       document.getElementById('t-extra').textContent = fmt(extra);
       document.getElementById('r-piqueo').textContent = fmt(d.piqueo);
-      document.getElementById('r-bebidas').textContent = fmt(d.bebidas);
+      document.getElementById('r-bebidas').textContent = fmt(calcBebidas(d));
       document.getElementById('r-mesas').textContent = fmt(d.mesas);
       document.getElementById('r-postre').textContent = fmt(d.postre);
 
       // Recuerdo
-      document.getElementById('t-recuerdo').textContent = fmt(d.recuerdo);
-      document.getElementById('r-recorda').textContent = fmt(d.recorda);
+      document.getElementById('t-recuerdo').textContent = fmt(calcRecordatorios(d) + 700);
+      document.getElementById('r-recorda').textContent = fmt(calcRecordatorios(d));
 
       // Resumen
       document.getElementById('b-ingresos').textContent = fmt(d.ingresos);
