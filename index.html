@@ -617,6 +617,40 @@
       font-style: italic;
     }
 
+
+    /* ── TABS ── */
+    .tab-nav {
+      display: flex;
+      background: var(--navy);
+      padding: 0 0.5rem;
+      gap: 2px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 0.65rem 0.4rem;
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover { color: rgba(255,255,255,0.9); }
+    .tab-btn.active {
+      color: var(--gold-light);
+      border-bottom: 3px solid var(--gold);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(18px); }
@@ -648,127 +682,15 @@
   </div>
 </div>
 
-<!-- ══ ESTATUS DE INSCRIPCIONES ══ -->
-<div class="inscripciones-section">
-  <h2 class="section-title">Presupuesto</h2>
-  <div class="inscripciones-card">
-    <div style="overflow-x:visible;">
-      <table class="inscritos-table" style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:0.72rem;">
-        <colgroup>
-          <col style="width:42%;">
-          <col style="width:19%;">
-          <col style="width:17%;">
-          <col style="width:22%;">
-        </colgroup>
-        <thead>
-          <tr>
-            <th style="text-align:left; font-size:0.75rem; background:none; font-family:'Lato',sans-serif; padding-bottom:0.7rem;"></th>
-            <th style="text-align:center; font-size:0.75rem; background:none; font-family:'Lato',sans-serif; white-space:nowrap; font-weight:700;">Actual<br><span style="font-weight:400;">(20 de Junio)</span></th>
-            <th style="text-align:center; font-size:0.75rem; background:none; font-family:'Lato',sans-serif; white-space:nowrap; font-weight:700;">Pendiente</th>
-            <th style="text-align:center; font-size:0.75rem; background:none; font-family:'Lato',sans-serif; white-space:nowrap; font-weight:700;">Proyectado<br><span style="font-weight:400;">(12 de Diciembre)</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Asistentes -->
-          <tr><td colspan="4" style="padding-top:0.8rem; font-weight:700; font-size:0.82rem; font-family:'Playfair Display',serif;"></td></tr>
-          <tr><td style="font-weight:700; font-size:0.82rem; font-family:'Playfair Display',serif;">Asistentes</td><td></td><td></td><td></td></tr>
-          <tr>
-            <td style="padding-left:1rem; font-weight:700; word-wrap:break-word; overflow-wrap:break-word;">Total de asistentes</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;" style="font-weight:700;">50</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;" style="font-weight:700;">50</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;" style="font-weight:700;">50</td>
-          </tr>
-          <tr>
-            <td style="padding-left:2rem; word-wrap:break-word; overflow-wrap:break-word;">Asistentes aportantes</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">48</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">48</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;">48</td>
-          </tr>
-          <tr>
-            <td style="padding-left:2rem; word-wrap:break-word; overflow-wrap:break-word;">Asistentes invitados</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">2</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">2</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;">2</td>
-          </tr>
-          <tr>
-            <td style="padding-left:3rem; color:#5b8dd9; font-style:italic; word-wrap:break-word; overflow-wrap:break-word;">Sacerdote</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;" style="color:#5b8dd9; font-style:italic;">1</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;" style="color:#5b8dd9; font-style:italic;">1</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;" style="color:#5b8dd9; font-style:italic;">1</td>
-          </tr>
-          <tr>
-            <td style="padding-left:3rem; color:#5b8dd9; font-style:italic; word-wrap:break-word; overflow-wrap:break-word;">Profesores</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;" style="color:#5b8dd9; font-style:italic;">1</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;" style="color:#5b8dd9; font-style:italic;">1</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;" style="color:#5b8dd9; font-style:italic;">1</td>
-          </tr>
-          <!-- Recaudación -->
-          <tr><td colspan="4" style="padding-top:1rem;"></td></tr>
-          <tr><td style="font-weight:700; font-size:0.82rem; font-family:'Playfair Display',serif;">Recaudación</td><td></td><td></td><td></td></tr>
-          <tr>
-            <td style="padding-left:1rem; font-weight:700; word-wrap:break-word; overflow-wrap:break-word;">Recaudación Total</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;" style="font-weight:700;">S/ 19,200</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;" style="font-weight:700;">S/ 2,900</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;" style="font-weight:700; background:#5a9e2f; color:#fff; border-radius:4px;">S/ 22,100</td>
-          </tr>
-          <tr>
-            <td style="padding-left:2rem; word-wrap:break-word; overflow-wrap:break-word;">Por Asistencia</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 11,500</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 2,900</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 14,400</td>
-          </tr>
-          <tr>
-            <td style="padding-left:2rem; word-wrap:break-word; overflow-wrap:break-word;">Por Donaciones</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 7,700</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 0</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 7,700</td>
-          </tr>
-          <!-- Costos -->
-          <tr><td colspan="4" style="padding-top:1rem;"></td></tr>
-          <tr><td style="font-weight:700; font-size:0.82rem; font-family:'Playfair Display',serif;">Costos</td><td></td><td></td><td></td></tr>
-          <tr>
-            <td style="padding-left:0.8rem; font-weight:700; word-wrap:break-word; overflow-wrap:break-word;">Costo Total</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center; font-weight:700;">S/ 8,151</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center; font-weight:700;">S/ 13,949</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center; font-weight:700;">S/ 22,100</td>
-          </tr>
-          <tr>
-            <td style="padding-left:1.4rem; word-wrap:break-word; overflow-wrap:break-word;">Ingreso a Real Club</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 0</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 175</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 175</td>
-          </tr>
-          <tr>
-            <td style="padding-left:1.4rem; word-wrap:break-word; overflow-wrap:break-word;">Teatrín</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 640</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 260</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 900</td>
-          </tr>
-          <tr>
-            <td style="padding-left:1.4rem; word-wrap:break-word; overflow-wrap:break-word;">San Telmo</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 7,500</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 7,500</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 15,000</td>
-          </tr>
-          <tr>
-            <td style="padding-left:1.4rem; word-wrap:break-word; overflow-wrap:break-word;">Casa de Duilio</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 0</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 2,825</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 2,825</td>
-          </tr>
-          <tr>
-            <td style="padding-left:1.4rem; word-wrap:break-word; overflow-wrap:break-word;">Otros</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 11</td>
-            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 3,189</td>
-            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 3,200</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<!-- ══ TAB NAV ══ -->
+<div class="tab-nav" id="tabNav">
+  <button class="tab-btn active" onclick="switchTab('inscripciones')">Inscripciones</button>
+  <button class="tab-btn" onclick="switchTab('programa')">Programa</button>
+  <button class="tab-btn" onclick="switchTab('presupuesto')">Presupuesto</button>
 </div>
 
-<!-- ══ ESTADO DE INSCRIPCIONES Y PAGOS ══ -->
+<!-- ══ TAB: INSCRIPCIONES ══ -->
+<div class="tab-panel active" id="tab-inscripciones">
 <div class="inscripciones-section">
   <h2 class="section-title">Estado de Inscripciones y Pagos</h2>
   <div class="inscripciones-card">
@@ -880,12 +802,11 @@
   </div>
 </div>
 
-<!-- ══ CUOTAS DE PAGO ══ -->
+<!-- ══ CUOTAS DE PAGO (parte de Estado de Inscripciones) ══ -->
 <div class="inscripciones-section">
-  <h2 class="section-title">Cuotas de Pago</h2>
   <div class="inscripciones-card">
     <div style="padding: 1rem 1.2rem;">
-      <div class="cuotas-title">Cuotas de pago</div>
+      <div style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; color: var(--navy); margin-bottom: 0.8rem; text-transform: uppercase;">Cuotas de Pago</div>
       <div class="cuotas">
         <div><span>Cuota #1 (29 de mayo, a más tardar)</span><span>S/ 100</span></div>
         <div><span>Cuota #2 (30 de junio, a más tardar)</span><span>S/ 100</span></div>
@@ -908,8 +829,10 @@
     </div>
   </div>
 </div>
+</div>
 
-<!-- ══ OPCION 2 ══ -->
+<!-- ══ TAB: PROGRAMA ══ -->
+<div class="tab-panel" id="tab-programa">
 <div class="section" style="padding-top:1.2rem;">
   <h2 class="section-title">Programa del Día</h2>
 
@@ -960,7 +883,7 @@
     <!-- Celebración -->
     <div class="venue-block">
       <div class="venue-time">5:00 – 8:00 pm · Tarde de Reencuentro y Celebración</div>
-      <div class="venue-name">Casa de Duilio</div>
+      <div class="venue-name">Celebración de confraternidad (Casa de Duilio)</div>
       <ul class="venue-list">
         <li><strong>Bebidas:</strong></li>
         <li class="sub">Refrescos, gaseosas y cerveza</li>
@@ -973,9 +896,130 @@
     </div>
   </div>
 </div>
+</div>
 
-<footer>
-  Maristas San Isidro · Prom XXXV · 50 Aniversario
-</footer>
+<!-- ══ TAB: PRESUPUESTO ══ -->
+<div class="tab-panel" id="tab-presupuesto">
+<div class="inscripciones-section">
+  <h2 class="section-title">Presupuesto</h2>
+  <div class="inscripciones-card">
+    <div style="overflow-x:visible;">
+      <table class="inscritos-table" style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:0.72rem;">
+        <colgroup>
+          <col style="width:52%;">
+          <col style="width:22%;">
+          <col style="width:26%;">
+        </colgroup>
+        <thead>
+          <tr>
+            <th style="text-align:left; font-size:0.75rem; background:none; font-family:'Lato',sans-serif; padding-bottom:0.7rem;"></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Asistentes -->
+          <tr><td style="font-weight:700; font-size:0.82rem; font-family:'Playfair Display',serif;">Asistentes</td><td></td><td></td></tr>
+          <tr>
+            <td style="padding-left:1rem; font-weight:700; word-wrap:break-word; overflow-wrap:break-word;">Total de asistentes</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center; font-weight:700;">50</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left:2rem; word-wrap:break-word; overflow-wrap:break-word;">Inscritos</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center;">48</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left:2rem; word-wrap:break-word; overflow-wrap:break-word;">Invitados</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center;">2</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left:3rem; color:#5b8dd9; font-style:italic; word-wrap:break-word; overflow-wrap:break-word;">Sacerdote</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center; color:#5b8dd9; font-style:italic;">1</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="padding-left:3rem; color:#5b8dd9; font-style:italic; word-wrap:break-word; overflow-wrap:break-word;">Profesores</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center; color:#5b8dd9; font-style:italic;">1</td>
+            <td></td>
+          </tr>
+          <!-- Encabezados de columna para Recaudación y Costos -->
+          <tr>
+            <td style="padding-top:1.2rem;"></td>
+            <td style="text-align:center; font-size:0.73rem; font-weight:700; white-space:nowrap; padding-top:1.2rem; color:var(--navy);">Actual<br><span style="font-weight:400;">(20 de Junio)</span></td>
+            <td style="text-align:center; font-size:0.73rem; font-weight:700; white-space:nowrap; padding-top:1.2rem; color:var(--navy);">Proyectado<br><span style="font-weight:400;">(12 de Dic.)</span></td>
+          </tr>
+          <!-- Recaudación -->
+          <tr><td style="font-weight:700; font-size:0.82rem; font-family:'Playfair Display',serif;">Recaudación</td><td></td><td></td></tr>
+          <tr>
+            <td style="padding-left:1rem; font-weight:700; word-wrap:break-word; overflow-wrap:break-word;">Recaudación Total</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center; font-weight:700;">S/ 19,200</td>
+            <td class="monto vence" style="white-space:nowrap; text-align:center; font-weight:700;">S/ 22,100</td>
+          </tr>
+          <tr>
+            <td style="padding-left:2rem; word-wrap:break-word; overflow-wrap:break-word;">Recaudación por Asistencia</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 11,500</td>
+            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 14,400</td>
+          </tr>
+          <tr>
+            <td style="padding-left:2rem; word-wrap:break-word; overflow-wrap:break-word;">Donaciones</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 7,700</td>
+            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 7,700</td>
+          </tr>
+          <!-- Costos -->
+          <tr><td colspan="3" style="padding-top:1rem;"></td></tr>
+          <tr><td style="font-weight:700; font-size:0.82rem; font-family:'Playfair Display',serif;">Costos</td><td></td><td></td></tr>
+          <tr>
+            <td style="padding-left:0.8rem; font-weight:700; word-wrap:break-word; overflow-wrap:break-word;">Costo Total</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center; font-weight:700;">S/ 8,151</td>
+            <td class="monto vence" style="white-space:nowrap; text-align:center; font-weight:700;">S/ 21,925</td>
+          </tr>
+          <tr>
+            <td style="padding-left:1.4rem; word-wrap:break-word; overflow-wrap:break-word;">Misa & Bienvenida (Teatrin del Real Club)</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 640</td>
+            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 1,075</td>
+          </tr>
+          <tr>
+            <td style="padding-left:1.4rem; word-wrap:break-word; overflow-wrap:break-word;">Almuerzo + terraza exclusiva (San Telmo Real Club)</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 7,500</td>
+            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 15,000</td>
+          </tr>
+          <tr>
+            <td style="padding-left:1.4rem; word-wrap:break-word; overflow-wrap:break-word;">Celebración de confraternidad (Casa de Duilio)</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 0</td>
+            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 2,825</td>
+          </tr>
+          <tr>
+            <td style="padding-left:1.4rem; word-wrap:break-word; overflow-wrap:break-word;">Recordatorios/ Fotógrafo/ Otros</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center;">S/ 11</td>
+            <td class="monto vence" style="white-space:nowrap; text-align:center;">S/ 3,025</td>
+          </tr>
+          <!-- Saldo en Caja -->
+          <tr><td colspan="3" style="padding-top:1rem;"></td></tr>
+          <tr>
+            <td style="font-weight:700; font-size:0.82rem; font-family:'Playfair Display',serif;">Saldo en Caja</td>
+            <td class="monto pagado" style="white-space:nowrap; text-align:center; font-weight:700;">S/ 11,049</td>
+            <td class="monto vence" style="white-space:nowrap; text-align:center; font-weight:700;">S/ 0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>Maristas San Isidro · Prom XXXV · 50 Aniversario · 2026</footer>
+
+<script>
+function switchTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 </body>
 </html>
